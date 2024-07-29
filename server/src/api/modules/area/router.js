@@ -1,9 +1,14 @@
-const express = require('express');
-const authController = require('../controllers/auth.controller');
+// middleware to check if user is authorize
 
-const router = express.Router();
 
-router.post('/login', authController.login);
-router.post('/register', authController.register);
+// get: area/getArea/all/{folder_id}
 
-module.exports = router;
+// get: area/getArea/{area_id}
+
+// get: area/{folder_id}/search?query
+
+// post: area/newArea
+
+// put: area/editArea
+
+// delete: area/deleteArea

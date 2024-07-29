@@ -1,22 +1,11 @@
-const User = require('../models/user.model');
-const jwt = require('jsonwebtoken');
+// get all area information of a contractor's folder (cookie session)
 
-class AuthService {
-  async login(username, password) {
-    const user = await User.findOne({ username });
-    if (!user || !(await user.comparePassword(password))) {
-      throw new Error('Invalid username or password');
-    }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    return { user, token };
-  }
+// get specific area information of contractor's folder (cookie session), query with area_id
 
-  async register(userData) {
-    const user = new User(userData);
-    await user.save();
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    return { user, token };
-  }
-}
+// get list of area based on query (area name)
 
-module.exports = new AuthService();
+// create new area (formData) 
+
+// edit existing area (formData)
+
+// delete area

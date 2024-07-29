@@ -10,7 +10,7 @@ const PaymentTermSchema = new mongoose.Schema({
     required: true
   },
   detail: {
-    type: String,
+    type: [String],
     required: true
   }
 });
@@ -56,6 +56,15 @@ const ContractorSchema = new mongoose.Schema({
   paymentInfo: {
     type: mongoose.Schema.Types.Mixed,
     default: undefined
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    immutable: true
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true
@@ -68,6 +77,13 @@ ContractorSchema.pre('validate', function(next) {
   } else {
     next();
   }
+});
+
+
+// Update the updatedAt field on save
+ContractorSchema.pre('save', function(next) {
+  this.updatedAt = new Date();
+  next();
 });
 
 const Contractor = mongoose.model('Contractor', ContractorSchema);
