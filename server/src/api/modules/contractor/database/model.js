@@ -58,16 +58,16 @@ const ContractorSchema = new mongoose.Schema({
     default: undefined
   },
   createdAt: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: () => new Date().toISOString(),
     immutable: true
   },
   updatedAt: {
-    type: Date,
-    default: Date.now
+    type: String,
+    default: () => new Date().toISOString()
   }
 }, {
-  timestamps: true
+  timestamps: false // Disable automatic timestamps
 });
 
 // Custom validation for googleId and telegramId
@@ -79,10 +79,9 @@ ContractorSchema.pre('validate', function(next) {
   }
 });
 
-
 // Update the updatedAt field on save
 ContractorSchema.pre('save', function(next) {
-  this.updatedAt = new Date();
+  this.updatedAt = new Date().toISOString();
   next();
 });
 

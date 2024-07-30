@@ -9,11 +9,13 @@
 // quantity: int
 // unit : string
 // description : [string]
+// price : float
 
 // // VariableCost
 // name : string
 // description
 // cost : float
+// price : flaot
 // quantity : int
 
 // // AreaProcessModel
@@ -25,7 +27,7 @@
 // listOfProducts : [MaterialDetailModel]
 // listOfServices : [MaterialDetailModel]
 // variableCost : [VariableCostModel]
-// price : float
+// totalCharge : float
 // cost : float
 // createdAt : datetime, default Date(), immutable
 // updatedAt : datetime, default Date()
